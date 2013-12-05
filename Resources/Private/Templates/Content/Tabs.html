@@ -1,0 +1,49 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+{namespace flux=Tx_Flux_ViewHelpers}
+<f:layout name="Content" />
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+		 <f:section name="Configuration">
+				 <flux:flexform wizardTab="ZF4" id="tabs" 
+						 icon="{v:extension.path.resources(path: 'Icons/Tabs.gif')}"
+						 label="Tabs" description="">
+
+								 <flux:flexform.section name="panels" label="Tabs">
+										 <flux:flexform.object name="panel" label="Tab">
+												 <flux:flexform.field.input name="title"  label="Título" />
+										 </flux:flexform.object>
+								 </flux:flexform.section>
+						 <flux:flexform.grid>
+								 <f:for each="{panels}" as="panel" iteration="iteration">
+										 <flux:flexform.grid.row>
+												 <flux:flexform.grid.column>
+														 <flux:flexform.content name="content.{iteration.index}" label="{f:if(condition: panel.panel.title, then: panel.panel.title, else: 'Content, panel {iteration.cycle}')}" />
+												 </flux:flexform.grid.column>
+										 </flux:flexform.grid.row>
+								 </f:for>
+						 </flux:flexform.grid>
+
+				 </flux:flexform>
+		 </f:section>
+
+<f:section name="Preview">
+		<flux:widget.grid />
+</f:section>
+
+<f:section name="Main">
+		<div class="section-container auto" data-section="auto" data-options="small_breakpoint: 640;">
+        <f:for each="{panels}" as="panel" iteration="iteration"> 
+            <section>
+                <p class="title" data-section-title>
+                    <a href="#panel-{record.uid}-{iteration.index}">{panel.panel.title}</a>
+                </p>
+                <div class="content" data-section-content>
+                    <flux:flexform.renderContent area="content.{iteration.index}" />
+                </div>
+            </section>
+				</f:for>
+    </div>
+</f:section>
