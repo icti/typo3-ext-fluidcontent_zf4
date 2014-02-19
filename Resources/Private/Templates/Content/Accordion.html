@@ -39,12 +39,7 @@
 				<f:for each="{panels}" as="panel" iteration="iteration">
             <section>
                 <p class="title" data-section-title>
-                    <a href="#panel-{record.uid}-{iteration.index}">{panel.panel.title}
-                        <span class="expand-indicator">
-                            <i class="fa fa-chevron-up"></i>
-                            <i class="fa fa-chevron-down"></i>
-                        </span>
-                    </a>
+                    <a href="#panel-{record.uid}-{iteration.index}">{panel.panel.title}</a>
                 </p>
                 <div class="content" data-section-content>
                     <flux:flexform.renderContent area="content.{iteration.index}" />
