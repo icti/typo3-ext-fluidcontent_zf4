@@ -11,11 +11,12 @@
 						 icon="{v:extension.path.resources(path: 'Icons/Accordion.gif')}"
 						 label="Accordion" description="">
 
-								 <flux:flexform.section name="panels" label="Accordion">
-										 <flux:flexform.object name="panel" label="Panel">
-												 <flux:flexform.field.input name="title"  label="Título" />
-										 </flux:flexform.object>
-								 </flux:flexform.section>
+						 <flux:flexform.field.checkbox name="collapsed" label="Todas las pestañas colapsadas al inicio" />
+						 <flux:flexform.section name="panels" label="Accordion">
+								 <flux:flexform.object name="panel" label="Panel">
+										 <flux:flexform.field.input name="title"  label="Título" />
+								 </flux:flexform.object>
+						 </flux:flexform.section>
 						 <flux:flexform.grid>
 								 <f:for each="{panels}" as="panel" iteration="iteration">
 										 <flux:flexform.grid.row>
@@ -35,7 +36,7 @@
 
 <f:section name="Main">
 
-		<div class="section-container accordion" data-section="accordion">
+		<div class="section-container accordion" data-section="accordion" data-options="{f:if(condition: collapsed, then:'one_up: false;', else:'')}">
 				<f:for each="{panels}" as="panel" iteration="iteration">
             <section>
                 <p class="title" data-section-title>
