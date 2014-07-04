@@ -36,7 +36,7 @@
 <f:section name="Main">
 		<div class="section-container tabs" data-section="tabs">
         <f:for each="{panels}" as="panel" iteration="iteration"> 
-            <section>
+            <section class="{f:if(condition:iteration.isFirst, then:'active')}">
                 <p class="title" data-section-title>
                     <a href="#panel-{record.uid}-{iteration.index}">{panel.panel.title}</a>
                 </p>
